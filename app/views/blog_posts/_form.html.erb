@@ -20,12 +20,12 @@
 	<%= f.text_field :title, class: "form-control", placeholder: "Enter your blog post name here" %>
 </div>
 
-<div class="form-group">
-	<%= f.text_field :author, class: "form-control", placeholder: "Author" %>	
+<div class="form-group hidden">
+	<%= f.number_field :user_id, value: current_user.id %>	
 </div>
 
 <div class="form-group">
-	<%= f.text_area :blog_entry, class: "form-control", rows: 8,placeholder: "Start typing" %>
+	<%= f.text_area :blog_entry, class: "form-control", rows: 9,placeholder: "Start typing" %>
 </div>
 
 <div class="Actions">

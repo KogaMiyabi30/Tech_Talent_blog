@@ -7,13 +7,24 @@ before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
   end
 
   def show
+  	@comment = Comment.new
   end
 
   def new
   	@blog_post = BlogPost.new
   end
 
+  def your_posts
+  end
+
+  def user_profile
+    @user = User.find(params[:id])
+  end
+
   def edit
+    unless current_user.id == @blog_post.user.id
+    redirect_to root_url
+    end
   end
 
   def create
@@ -57,7 +68,7 @@ before_action :set_blog_post, only: [:show, :edit, :update, :destroy]
   end
 
   def blog_post_params
-  	params.require(:blog_post).permit(:title, :blog_entry, :author)
+  	params.require(:blog_post).permit(:title, :blog_entry, :user_id)
   end
 
 
